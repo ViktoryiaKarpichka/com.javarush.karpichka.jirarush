@@ -1,5 +1,10 @@
 package com.javarush.jira.bugtracking.task;
 
+import static com.javarush.jira.bugtracking.ObjectType.TASK;
+import static com.javarush.jira.bugtracking.task.TaskUtil.fillExtraFields;
+import static com.javarush.jira.bugtracking.task.TaskUtil.makeActivity;
+import static com.javarush.jira.ref.ReferenceService.getRefTo;
+
 import com.javarush.jira.bugtracking.Handlers;
 import com.javarush.jira.bugtracking.UserBelong;
 import com.javarush.jira.bugtracking.UserBelongRepository;
@@ -14,18 +19,12 @@ import com.javarush.jira.common.error.NotFoundException;
 import com.javarush.jira.common.util.Util;
 import com.javarush.jira.login.AuthUser;
 import com.javarush.jira.ref.RefType;
+import java.time.LocalDateTime;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-
-import java.time.LocalDateTime;
-import java.util.List;
-
-import static com.javarush.jira.bugtracking.ObjectType.TASK;
-import static com.javarush.jira.bugtracking.task.TaskUtil.fillExtraFields;
-import static com.javarush.jira.bugtracking.task.TaskUtil.makeActivity;
-import static com.javarush.jira.ref.ReferenceService.getRefTo;
 
 @Service
 @RequiredArgsConstructor
