@@ -1,12 +1,14 @@
-FROM openjdk:17-buster
-ARG JAR_FILE=target/*.jar
+FROM openjdk:17-jdk-slim
+WORKDIR /app
 
-COPY config/_application-prod.yaml /config/_application-prod.yaml
+COPY resources /app/resources
+COPY target/jira-1.0.jar app.jar
 
-COPY ./resources /resources
-COPY ./src/main/resources /src/main/resources
+EXPOSE 8080
 
-COPY target /
-COPY ${JAR_FILE} jira-1.0.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
 
-ENTRYPOINT ["java","-jar","/jira-1.0.jar"]
+
+
+
+
